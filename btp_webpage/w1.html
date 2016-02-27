@@ -1,0 +1,84 @@
+<body>
+<html>
+<head>
+  <link rel="stylesheet" href="w.css">
+</head>
+<body>
+<TITLE>NPR of Videos</TITLE>
+<h1>Artistic rendering of Images</h1>
+
+
+<P>
+<DIV STYLE="{position: absolute; left: 70;height: 300;z-index:1;}">
+<img src="img/fruits.jpg"/ alt="Image used as input" height="30%" align="right">
+</DIV>
+<DIV STYLE="{position: relative;top: 10;z-index:0;}">
+<img src="img/fruitresult.png"/ alt="result from npr" height="45%" align="left">
+</DIV>
+
+Since videos have large no of frames manual specification of brush strokes will be very tedious. So I decided
+to use techniques which can do this automatically. One of such approaches is to assume that a brush stroke
+approximates image around each pixel and calculate the parameters of brush stroke. To calculate we chose a neighbourhood
+of square shape around pixel and calculate image moments of zeroth, first and second order. Using image moments we find the
+orientation, size etc of stroke. The ratio of first order and zeroth order moments give the approximate location of brush
+ stroke in the neighborhood. The second order moments are needed for angle calculation. These formulae are easy to
+ understand if we relate drawing a brush stroke to fitting an ellipse to same colored points. The axes can be
+ calculated using information about variance and covariance. If we look closely first order moment is average and
+ second order moment is variance and covariance. This approach was inspired from
+  <a href="http://portal.acm.org/citation.cfm?id=340923">
+  An algorithm for automatic painterly rendering based on local source image approximation"</a> by Michio Shiraishi
+  and Yasushi Yamaguchi.
+</P>
+
+<P>
+Artists and painters normally follow a coherent theme in their painting. May be we too can improvise if we can orient each
+brush stroke based on the complete image rather than just the local neighbourhood. One of the ways to do this can be to
+use gradient information to draw strokes. But gradient information is meaningless in interior of objects. Using the
+values of gradients at the edges we can create hypothetical "edges" inside the objects. To do this we can use neural
+networks in conjunction with radial basis functions. Neural networks are widely used in AI applications to learn outputs based on given inputs. The nice thing
+about these networks is that they can learn anything! just as human brain is capable of adapting to varied inputs
+same set of perceptrons can learn different data sets. We exploited this idea to interpolate gradient values in the interior of
+objects and then paint the stroke perpendicular to them.(Taken from
+<a href="http://portal.acm.org/citation.cfm?id=987676">image and video based painterly animation</a> by
+Irfan Essa). See the images below for results.
+</p>
+<img src="img/flowerinput.jpg"/ height="50%">
+<img src="img/flowercenter.jpg"/ height="50%">
+<img src="img/flowerflow.jpg"/ height="50%">
+<img src="img/flowerresult.jpg" / height="50%">
+
+
+<P>
+<DIV STYLE="{position: absolute; left: 70;height: 300;z-index:1;}">
+<img src="img/apple.jpg"/ alt="Image used as input" height="30%" align="right">
+</DIV>
+<DIV STYLE="{position: relative;top: 10;z-index:0;}">
+<img src="img/appleresult.png"/ alt="result from npr" height="45%" align="left">
+</DIV>
+
+Have you noticed than till now I completely overlooked the smaller details like canvas, the medium and brushes used in
+painting. But if we want to create effects similar to watercolor and paintbrush we have to account for the things like
+ capillary effects on canvas. Watercolor over canvas can be viewed as three layers - over the paper is the part where
+ shallow water dynamics is in action. On the paper-water interface the pigments get adsorbed and desorbed. Just beneath this layer the capillary effects occur. OF course we dont need to emulate the exact laws of physics involved. All we need is
+ to produce effects similar to ones produced in real world paintings. This
+<a href="videos/resultpinkbluesstroke.wmv">video</a> was produced using
+ simulation techniques discussed in <a href="http://portal.acm.org/citation.cfm?id=258896">
+ Computer genrated watercolor</a> by curtis. Notice how the stroke changes with time.
+</p>
+<P>
+<img src="img/Strokes.png" height=40%" align="right" >
+ Now comes the part where we simulate the brush strokes and try to make them just as an artists brush is moving
+on the canvas. On the side you can see some brush strokes that I modeled using plain physics laws. Since fibers are
+made up of same material we can assume they have same Young's modulus. Based on this we can calculate the extent of
+their compression when we place a stroke with certain amount of pressure on paper. Since paper is uneven pigment from
+stroke gets transferred selectively. In a flat brush small variations in fiber lengths produce striated effect in
+brush stroke. This can be modeled by adding a small amount of pressure where brush stroke is longer than the average.
+ The nice "meandering" can be modeled as a shift in center of stroke along its length. Canvas can be modeled as a height
+ field and we can use pseudo random number generator to initialize it. All these effects can be combined
+  to produce nice effects shown in the image on right.  </p>
+
+<a href="w2.html"> Application over videos >> </a>
+</html>
+</body>
+
+

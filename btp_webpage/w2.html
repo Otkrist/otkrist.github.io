@@ -1,0 +1,45 @@
+<body>
+<html>
+<head>
+  <link rel="stylesheet" href="w.css">
+</head>
+<body>
+<TITLE>NPR of Videos</TITLE>
+<h2>Artistic Rendering of Videos</h2>
+
+<div><img src="videos/resultfgdetection.png" height="283" width="320" alt=""  style="cursor:pointer;" onclick="this.parentNode.innerHTML = '\x3Cembed src=\'videos/resultfgdetection.avi\' width=\'320\' height=\'283\' autostart=\'1\' showcontrols=\'1\' type=\'application/x-mplayer2\' pluginspage=\'http://www.microsoft.com/windows/windowsmedia/download/\'\x3E \x3C/embed\x3E';"></div>
+
+<P>
+<div><img src="videos/result_movestroke.png" height="283" width="320" alt="" style="cursor:pointer;" align=left   onclick="this.parentNode.innerHTML = '\x3Cembed src=\'videos/result_movestroke.avi\' width=\'320\' height=\'283\' align=left autostart=\'1\' showcontrols=\'1\' type=\'application/x-mplayer2\' pluginspage=\'http://www.microsoft.com/windows/windowsmedia/download/\'\x3E \x3C/embed\x3E';"></div>
+Now comes the part where we apply these techniques to videos. In the beginning I applied these techniques
+ directly frame by frame on videos. But this led to considerable amount of flickering. So I decided to use
+ another approach to reduce the flickering by moving the strokes based on optical flow information. To do this
+we split a frame into boxes and using the difference from the frame ahead we assign velocity to each of the boxes.
+Once we have this information we can move the strokes in the frame to create a new frame. Alternatively while drawing
+the new frame we could predict the location of a stroke in previous frame and then place the strokes.We could apply
+the motion vector approach on just the parts which actually move. The results which were obtained using these
+ techniques are shown in the side. The final result which I showed in the beginning applied all these techniques. I used the watercolor simulation
+while painting each frame and used motion detection to reduce flickering.
+</p>
+
+<P>
+<div><img src="videos/resultsnpr1.png" height="283" width="320" alt="" style="cursor:pointer;" align="right" onclick="this.parentNode.innerHTML = '\x3Cembed src=\'videos/resultsnpr1.avi\' width=\'320\' height=\'283\' align=\'right\' autostart=\'1\' showcontrols=\'1\' type=\'application/x-mplayer2\' pluginspage=\'http://www.microsoft.com/windows/windowsmedia/download/\'\x3E \x3C/embed\x3E';"></div>
+ One of the reasons why the video flickers is that the still parts are redrawn again. So I decided to omit repeated
+ application of these techniques on parts of video that don't change. For this I had to perform foreground segmentation
+  on Video. As it turns out this problem has been addressed quiet well. In fact libraries like opencv come with built
+   in functionality to do this. But I decided to use a more novel approach which uses
+   <a href="http://www.springerlink.com/content/73202405v616608u/">
+   eigenbackground subtraction and recursive error compensation</a>. Click on the image above to view the results.
+   Once the motion segmentation is done NPR can be applied selectively over the portions which change with time.
+   Interesting effects can be achieved by alpha blending original frames and artistically rendered frames using
+   the segmetation result as a filter. For smooth blending a second component can be added to this filter which decays
+   with distance. Video on right shows some of the results that we could achieve.
+ </P>
+
+
+
+
+
+</body>
+</html>
+

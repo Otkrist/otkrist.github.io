@@ -1,0 +1,15 @@
+body {
+  padding-left: 4em;
+  font-family: Georgia, "Times New Roman",Times, serif;
+  font-size: 14pt;
+  color: purple;
+  background-color: #EEE8AA ;
+}
+html>body #navcontainer2 li a { width: auto; }
+
+img {
+  border:3px;
+  color:BLACK;
+  hspace:5px;
+}
+

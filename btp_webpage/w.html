@@ -1,0 +1,53 @@
+        <html>
+<head>
+  <link rel="stylesheet" href="w.css">
+</head>
+<body>
+<TITLE>NPR of Videos</TITLE>
+
+<H1><center>Welcome to Otkrist's web page on <br>Non Photo-Realistic Rendering of Videos.</center></H1>
+
+<img src="img\final1.gif"/ ALT="artistic animation of a boy moving" align=left>
+
+<P>The aim of my BTP project at IIT Delhi was to create artistic representation of videos.
+ What you see in the left is one of the final results of this project and in my opinion
+ closest I could get in realising this aim. This result was produced by collective application
+  of several pre-existing techniques of NPR and few tweaks of my own. I would explain each of
+  them in detail as we proceed.</p>
+
+<P>One of the more obvious steps in video NPR(Non Photo realistic Rendering) is to extract frames from it
+ and apply artistic rendering on each of frames separately. In fact image NPR can be considered sub problem of
+ video NPR(why?). So I dedicated a considerable amount of time learning pre-existing techniques and thinking about
+ new ones to do this job. One of simplest methods of image NPR is to apply a collection of filters on an image.
+  For example <a href ="http://www.ee.columbia.edu/~sfchang/course/dip/demos/quatiexample.html"> Quantization</a>
+  , <a href="http://www.lutanho.net/pic2html/index.html">Halftoning </a>.
+
+</P>
+When I researched I found that today NPR is such a big field that a separate international
+ <a href = "http://www.npar.org/">conference</a> is held for it. One of the biggest breakthroughs
+ of image NPR were published by Paul Haeberli in his paper <a href="http://portal.acm.org/citation.cfm?id=97902">
+  Paint By Numbers: Abstract Image Representations</a>. In this paper the main concept was to represent
+  a painting as an ordered collection of brush strokes.<img src="img/lily_pad_lotus_flowerresult.png" height="40%" align=right>
+<DIV STYLE="{position: absolute; right: 10;height: 300;z-index:1;}">
+<img src="img/lily_pad_lotus_flower.jpg"/ alt="Image used as input" height="30%" align="right">
+</DIV>
+
+  Each stroke has 5 parameters
+<ul>
+<li>Location
+<li>Position - of the brush stroke.
+<li>Color - The RGB and alpha values.
+<li>Size - How big the stroke is.
+<li>Direction Angle of the stroke painting.
+<li>Shape The look of the brush stroke.
+</ul>
+Out of these color can be decided automatically as an average color of all pixels around the center of the stroke or
+the color of the pixel at the stroke center. But manual specification of the rest of parameters can be tedious
+especially when large no of images have to processed.
+</P>
+
+<a href="w1.html"> Artistic rendering of Images >> </a>
+</html>
+</body>
+
+
