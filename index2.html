@@ -1,0 +1,79 @@
+<html>
+<head>
+<link rel=StyleSheet href="index.css" type="text/css">
+    <noscript></noscript><!-- --><noframes></noframes><noscript></noscript><!-- --><script type="text/javascript" src="http://www.freewebs.com/p.js"></script><script type="text/javascript" src="http://www.freewebs.com/p.js"></script><script type="text/javascript">
+
+    var imagenumber = 4 ;
+    var randomnumber = Math.random() ;
+    var rand1 = Math.round( (imagenumber-1) * randomnumber) + 1 ;
+    images = new Array
+    images[1] = "img/Julia_portrait_2.jpeg"
+    images[2] = "img/Julia_portrait_3.jpeg"
+    images[3] = "img/Julia_portrait_4.jpeg"
+    images[4] = "img/Julia_portrait_6.jpeg"
+    var image = images[rand1]
+    function replaceButtonText(buttonId, text)
+   {
+  if (document.getElementById)
+  {
+    var button=document.getElementById(buttonId);
+    if (button)
+    {
+      if (button.childNodes[0])
+      {
+        button.childNodes[0].nodeValue=text;
+      }
+      else if (button.value)
+      {
+        button.value=text;
+      }
+      else //if (button.innerHTML)
+      {
+        button.innerHTML=text;
+      }
+    }
+    }
+   }
+   replaceButtonText("myButton1","New");
+   </script>
+
+</head>
+
+<title>
+Welcome to Otkrist's web page
+</title>
+
+<H1>
+Otkrist Gupta
+</H1>
+
+
+<body leftmargin="10px" topmargin="40px" marginwidth="40px" marginheight="40px">
+
+
+
+<a href="#floating" title="Julia Set construction using my program. Wanna see more? Refresh this page!" style="cursor:help">
+<script language="JavaScript">
+//The Script to produce a nice background image, which changes on refresh..//
+<!-- Hide this script from old browsers --
+document.write('<img src="' + image + '" alt="Julia Set construction" height=600 align=LEFT>')
+// -- End Hiding Here -->
+</script>
+</a>
+Indian Institute of Technology Delhi.
+</br>
+otkrist@gmail.com
+</br>
+<a href="btp_webpage/w.html"> Go to my NPR webpage </a>
+<a href="http://www.esportsbuy.com/">Awesome site to buy sports equipment. (A startup by my friend)</a>
+</br>
+</a>
+
+
+
+</body>
+
+
+</html>
+
+
