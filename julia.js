@@ -8,8 +8,9 @@ images = [
 window.onload = function() {
   var imagenumber = 4 ;
   var randomnumber = Math.random() ;
-  var rand1 = Math.round((imagenumber-1) * randomnumber) +  1;
+  var rand1 = Math.floor(imagenumber * randomnumber);
   bodyelem = document.getElementById('foobar');
+  console.log(rand1);
   bodyelem.style.backgroundImage = "url(" +images[rand1] + ")";
   document.body.style.backgroundImage = images[rand1];
 }
