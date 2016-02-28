@@ -9,6 +9,18 @@ body {
   height:100vh;
 }
 
+#foobar {
+  position: relative;
+}
+#foobar canvas, #overlay {
+  position: absolute;
+}
+canvas {
+  border: 0px solid black;
+  height: 1000px;
+  width: 1000px;
+}
+
 ul.navBar
 {
 list-style-type:none;
