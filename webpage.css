@@ -1,7 +1,12 @@
 
 body {
-  background: #0C1114 url(img/Julia_portrait_6.jpeg) no-repeat top center;
+  background-color: #0C1114;
   color: #8EA2AD;
+}
+
+#foobar {
+  /*background-image: url(img/Julia_portrait_3.jpeg);*/
+  height:100vh;
 }
 
 ul.navBar

@@ -6,10 +6,11 @@ images = [
 ];
 
 window.onload = function() {
-  console.log("here here")!
   var imagenumber = 4 ;
   var randomnumber = Math.random() ;
-  var rand1 = Math.round( (imagenumber-1) * randomnumber) + 1 ;
-  
+  var rand1 = Math.round((imagenumber-1) * randomnumber) +  1;
+  bodyelem = document.getElementById('foobar');
+  bodyelem.style.backgroundImage = "url(" +images[rand1] + ")";
+  document.body.style.backgroundImage = images[rand1];
 }
 
