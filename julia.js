@@ -78,7 +78,7 @@ function drawTheSet(canvas) {
         zImg[x][y] = val_i;
         imgData.data[i+0]=0;
         imgData.data[i+1]=0;
-        imgData.data[i+2]= z_dist < 0.2 ? 255 : 0;
+        imgData.data[i+2]= x%255;z_dist < 0.2 ? 255 : 0;
         imgData.data[i+3]=255;
       }
     }
