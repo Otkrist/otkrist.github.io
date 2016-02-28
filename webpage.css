@@ -17,8 +17,8 @@ body {
 }
 canvas {
   border: 0px solid black;
-  height: 1000px;
-  width: 1000px;
+  height: 100%;
+  width: 100%;
 }
 
 ul.navBar
