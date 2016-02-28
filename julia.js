@@ -13,5 +13,19 @@ window.onload = function() {
   console.log(rand1);
   bodyelem.style.backgroundImage = "url(" +images[rand1] + ")";
   document.body.style.backgroundImage = images[rand1];
+  //drawTheSet(bodyelem);
+}
+
+function drawTheSet(canvas) {
+  var canvas=document.getElementById("myCanvas");
+  var ctx=canvas.getContext("2d");
+  var imgData=ctx.createImageData(100,100);
+  for (var i=0;i<imgData.data.length;i+=4) {
+    imgData.data[i+0]=255;
+    imgData.data[i+1]=0;
+    imgData.data[i+2]=0;
+    imgData.data[i+3]=255;
+  }
+  ctx.putImageData(imgData,10,10);
 }
 
