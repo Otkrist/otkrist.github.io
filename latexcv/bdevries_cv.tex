@@ -1,0 +1,181 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Graduate Curriculum Vitae
+% LaTeX Template
+% Version 1.1 (9/12/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Rensselaer Polytechnic Institute (http://www.rpi.edu/dept/arc/training/latex/resumes/)
+%
+% Important note:
+% This template requires the res.cls file to be in the same directory as the
+% .tex file. The res.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[margin, 10pt]{res} % Use the res.cls style, the font size can be changed to 11pt or 12pt here
+
+\usepackage{helvet} % Default font is the helvetica postscript font
+%\usepackage{newcent} % To change the default font to the new century schoolbook postscript font uncomment this line and comment the one above
+
+
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\urlstyle{same}
+
+\usepackage{etaremune}
+
+\setlength{\textwidth}{5.6in} % Text width of the document
+\setlength{\sectionwidth}{1.6in}
+% \setlength{\sectionskip}{1.6}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND ADDRESS SECTION
+%----------------------------------------------------------------------------------------
+
+\moveleft.5\hoffset\centerline{\large\bf Otkrist Gupta} % Your name at the top
+ 
+ \moveleft.5\hoffset\centerline{6 Cutter St, Apt 1, Somerville, MA, 02145, otkrist@gmail.com}
+
+\moveleft\hoffset\vbox{\hrule width\resumewidth height 0.5pt}\smallskip % Horizontal line after name; adjust line thickness by changing the '1pt'
+ 
+
+
+%----------------------------------------------------------------------------------------
+
+\begin{resume}
+
+ 
+\section{ACADEMIC \\BACKGROUND}
+
+{\bf Ph.D., Massachusetts Institute of Technology, MIT Media Lab} \hfill 2018
+\begin{itemize}
+\item Designing neural network architectures using reinforcement learning  (ICLR 2017)
+% \item Working on automating the process of hyper-parameter selection while training neural networks
+\item Developed new machine learning algorithms for distributed training of neural networks without sharing of raw data (SplitNN/Federated Learning)
+\item Developed deep learning methods for classification of facial videos using auto-encoders, and determination of physiological signals such as heart rate using thermal imaging (CVPR 2016)
+\item Ph.D. Dissertation title: Unlocking the potential of neural networks in resource and data constrained environments.
+\end{itemize}
+
+{\bf  M.Sc., Massachusetts Institute of Technology, MIT Media Lab} \hfill 2012
+\begin{itemize}
+\item Gave the mathematical proof of existence and uniqueness of solution for around the corner 3D shape problem (Nature Communication, 2011)
+\item Developed an iterative fixed point algorithm for around the corner 3D imaging using time of arrival data of photons (Optics Express, 2012)
+\item Thesis: Recovering 3D shape Around a Corner using Ultra -Fast Time-of-Flight Imaging
+\end{itemize}
+
+{\bf B.Tech, Indian Institute of Technology Delhi, Comp. Science} \hfill Rank \#1, 9.6/10.0 (2009)
+\begin{itemize}
+\item Coursework (selected) – Data structures, Analysis and Design of Algorithms, Programming Languages, Artificial Intelligence
+\item Awarded \textbf{President’s Gold Medal} for highest academic achievement in IIT among all graduating students
+\end{itemize} 
+
+
+\section{INDUSTRY \\EXPERIENCE}
+
+%{\bf V.P. of Datascience, \href{http://www.lendbuzz.com}{Lendbuzz}} \hfill 2018 - Present \\
+
+{\bf V.P. of Research and Development, Lendbuzz (Pre-IPO Unicorn)} \hfill 2021 - Present 
+\begin{itemize}
+\item Promoted to lead multiple teams, led scale up both operations and infrastructure
+\item Lead hiring of 16 engineers and team leads, on both research and development fronts
+\item Leading development of computer vision models for automated ID verification, bank statement parsing, MRZ extraction , image manipulation and fraud detection (IJDAR 2021,  EURASIP 2022)
+\end{itemize} 
+
+{\bf V.P. of Datascience, Lendbuzz} \hfill June 2018 - June 2021
+\begin{itemize}
+\item Developed the financial risk scoring model, used for underwriting in sale of approx. billion dollar worth of car loans and 400 million dollar risk amortized securitization
+\item Hired and led a team of 6 people including 3 Ph.D.s to research, build and deliver 20+ ml models for various business use cases (and published research papers)
+\item Architect and lead developer of AutoML platform for hyperparameter optimization
+\item Developed the in-house MLOps platform for automated model optimization, tracking, reporting, deployment, testing and auditing
+\item Scaling up deployment of models using both RESTful apis and asynchronous queues
+\end{itemize} 
+
+{\bf Software Engineer, Google} \hfill May 2013 - August 2014 
+\begin{itemize}
+\item  Developed new speech infrastructure for Google Search NLP to improve the quality of voice responses
+\item Developed Google Now actions such as “What’s on my Chromecast ?” featured in Google I/O 2014
+\end{itemize} 
+
+{\bf Software Engineer, LinkedIn} \hfill June 2012- May 2013 
+\begin{itemize}
+\item Architect and owner of recruiter typeahead service to provide ultrafast searches over millions of member names
+\item Worked in a team to develop CheckIn app for sourcing millions of job applicants all over the country
+\item Built a notifications and alerts platform using Hadoop to store and retrieve information on a cluster
+\end{itemize} 
+
+{\bf Software Developer, Tower Research Capital} \hfill June 2009 - August 2010 
+\begin{itemize}
+\item Developed servers (in C++) for trading and market data acquisition on LSE, NYSE Euronext and other exchanges
+\item Designed and developed UI (Django and MySQL) to administer trader risk limits and positions
+\item Developed a library of scripts to track positions, check database, send alerts, and debug server messages
+\end{itemize} 
+
+\section{SELECT\\PUBLICATIONS}
+Cited 3700 times, h-index  \textbf{20}, i10-index  \textbf{25}, see also my  \href{https://scholar.google.com/citations?hl=en&user=2aEdHz0AAAAJ&view_op=list_works}{Google Scholar} page. \\
+\begin{etaremune}[start=27]
+\item Liu, Y., James, H., Gupta, O. and Raviv, D., 2022. MRZ code extraction from visa and passport documents using convolutional neural networks. International Journal on Document Analysis and Recognition (IJDAR).
+\item James, H., Gupta, O. and Raviv, D., 2022. Learning Document Graphs with Attention for Image Manipulation Detection. In International Conference on Pattern Recognition and Artificial Intelligence.
+\item Dubey, A., Gupta, O., Raskar, R. and Naik, N., 2018. Maximum-entropy fine grained classification. Advances in neural information processing systems (NeurIPS).
+\item Dubey, A., Gupta, O., Guo, P., Raskar, R., Farrell, R. and Naik, N., 2018. Pairwise confusion for fine-grained visual classification. In Proceedings of the European conference on computer vision (ECCV).
+\item Gupta, O. and Raskar, R., 2018. Distributed learning of deep neural network over multiple agents. Journal of Network and Computer Applications
+\item Gupta, O., Raviv, D. and Raskar, R., 2018. Illumination invariants in deep video expression recognition. Pattern Recognition.
+\item Gupta, O., Das, A.J., Hellerstein, J. and Raskar, R., 2018. Machine learning approaches for large scale classification of produce. Nature Scientific reports.
+\item Dubey, A., Gupta, O., Raskar, R., Rahwan, I. and Naik, N., 2017, December. Regularizing Prediction Entropy Enhances Deep Learning with Limited Data. In Proceedings of the Neural Information Processing Systems (NeurIPS).
+\item Baker, B., Gupta, O., Naik, N. and Raskar, R., 2016. Designing neural network architectures using reinforcement learning. International conference on learning representations (ICLR).
+\item Velten, A., Willwacher, T., Gupta, O., Veeraraghavan, A., Bawendi, M.G. and Raskar, R., 2012. Recovering three-dimensional shape around a corner using ultrafast time-of-flight imaging. Nature communication.
+\item Gupta, O., Willwacher, T., Velten, A., Veeraraghavan, A. and Raskar, R., 2012. Reconstruction of hidden 3D shapes using diffuse reflections. Optics express.
+\end{etaremune}
+\section{PUBLICATIONS \\ CONTD.}
+\begin{etaremune}
+\item James, H., Gupta, O. and Raviv, D., 2022. Printing and scanning investigation for image counter forensics. EURASIP Journal on Image and Video Processing.
+\item Vepakomma, P., Singh, A., Zhang, E., Gupta, O. and Raskar, R., 2021, December. NoPeek-Infer: Preventing face reconstruction attacks in distributed inference after on-premise training. IEEE International Conference on Automatic Face and Gesture Recognition (FG).
+\item James, H., Gupta, O. and Raviv, D., 2020. Printing and Scanning Attack for Image Counter Forensics. arXiv preprint arXiv:2005.02160.
+% \item James, H., Gupta, O. and Raviv, D., 2020. OCR Graph Features for Manipulation Detection in Documents. arXiv preprint arXiv:2009.05158.
+\item Gupta, O. and Raskar, R., Massachusetts Institute of Technology, 2020. Secure training of multi-party deep neural network. U.S. Patent 10,755,172.
+\item Ilanchezian, I., Vepakomma, P., Singh, A., Gupta, O., Prasanna, G.N. and Raskar, R., 2019. Maximal adversarial perturbations for obfuscation: Hiding certain attributes while preserving rest. arXiv preprint arXiv:1909.12734.
+\item Singh, A., Vepakomma, P., Gupta, O. and Raskar, R., 2019. Detailed comparison of communication efficiency of split learning and federated learning. arXiv preprint arXiv:1909.09145.
+\item Vepakomma, P., Gupta, O., Dubey, A. and Raskar, R., 2019. Reducing leakage in distributed deep learning for sensitive health data. arXiv preprint arXiv:1812.00564.
+\item Vepakomma, P., Gupta, O., Swedish, T. and Raskar, R., 2018. Split learning for health: Distributed deep learning without sharing raw patient data. arXiv preprint arXiv:1812.00564.
+\item Vepakomma, P., Swedish, T., Raskar, R., Gupta, O. and Dubey, A., 2018. No peek: A survey of private distributed deep learning. arXiv preprint arXiv:1812.03288.
+\item Baker, B., Gupta, O., Raskar, R. and Naik, N., 2017. Accelerating neural architecture search using performance prediction. International conference on learning representations (ICLR).
+\item Satat, G., Tancik, M., Gupta, O., Heshmat, B. and Raskar, R., 2017. Object classification through scattering media with deep learning on time resolved measurement. Optics express.
+\item Rana, A., Yauney, G., Wong, L.C., Gupta, O., Muftu, A. and Shah, P., 2017, November. Automated segmentation of gingival diseases from oral images. In 2017 IEEE Healthcare Innovations and Point of Care Technologies (HI-POCT).
+\item Gupta, O., Raviv, D. and Raskar, R., 2017. Multi-velocity neural networks for facial expression recognition in videos. IEEE Transactions on Affective Computing (TAC).
+\item Gupta, O., McDuff, D. and Raskar, R., 2016. Real-time physiological measurement and visualization using a synchronized multi-camera system. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops.
+\item Gupta, O., Raviv, D. and Raskar, R., 2016. Deep video gesture recognition using illumination invariants. arXiv preprint arXiv:1603.06531.
+
+
+
+\end{etaremune}
+
+
+\section{SPECIAL \\ACHIEVEMENTS}
+
+%{\bf V.P. of Datascience, \href{http://www.lendbuzz.com}{Lendbuzz}} \hfill 2018 - Present \\
+
+\begin{itemize}
+\item Semi-Finalist in MIT 100K (founding member Convexic – job matching for companies and users)
+\item Awarded Rajiv Bambawale, B.N. Bhardawaj, Raman Subramaniam awards for academic excellence in IIT
+\item Secured percentile of 99.4 in CAT out of 2,50,000, and accepted into IIM Ahmedabad and Bangalore (2009)
+\end{itemize} 
+
+
+
+\end{resume}
+\end{document}
