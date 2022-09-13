@@ -1,0 +1,12 @@
+body {
+  /* background-image: url("img/yellow_fabric_1.jpeg");
+  background-position: 50% 50%;
+  background-repeat: repeat; */
+  background-color: black;
+}
+/* The section below needed to attach the image for julia. */
+#foobar {
+  background-image: url(img/Julia_portrait_3.jpeg);
+  height:100vh;
+}
+
