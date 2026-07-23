@@ -173,6 +173,81 @@
       .project { grid-template-columns: 380px 1fr; gap: 48px; }
     }
 
+    /* Talks & Media — featured video tiles reuse the .project grid */
+    .talk-card .video {
+      position: relative;
+      display: block;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .talk-card .video img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      padding: 0;
+      border: 0;
+      background: #000;
+    }
+    .talk-card .video::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: rgba(15, 17, 20, 0.62);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: 54% center;
+      background-size: 26px;
+      transition: transform .15s ease, background-color .15s ease;
+    }
+    .talk-card .video:hover::after {
+      background-color: color-mix(in srgb, var(--accent) 92%, transparent);
+      transform: scale(1.08);
+    }
+    .talk-card .meta { color: var(--muted); font-size: 14px; margin: 0 0 6px; }
+
+    /* Podcasts & interviews — compact year-column list */
+    .talk {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 24px;
+      align-items: baseline;
+      margin-bottom: 26px;
+    }
+    .talk .year {
+      color: var(--muted);
+      font-size: 14px;
+      font-variant-numeric: tabular-nums;
+    }
+    .talk h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 0 0 4px;
+      letter-spacing: -0.01em;
+    }
+    .talk h3 a { color: var(--fg); }
+    .talk h3 a:hover { color: var(--accent); text-decoration: none; }
+    .talk .meta { color: var(--muted); font-size: 14px; }
+    .talk p { color: var(--muted); font-size: 15px; margin: 6px 0 0; }
+
+    .talk-sub {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 40px 0 24px;
+    }
+
+    @media (max-width: 520px) {
+      .talk { grid-template-columns: 1fr; gap: 4px; }
+    }
+
     #top { scroll-margin-top: 80px; }
 
     footer {
@@ -187,6 +262,7 @@
     <nav>
       <a href="#top" aria-current="page">Home</a>
       <a href="#projects">Work</a>
+      <a href="#talks">Talks</a>
       <a href="OtkristGuptaCV.pdf">Resume</a>
     </nav>
 
@@ -267,7 +343,7 @@
       </div>
 
       <div class="project">
-        <img src="images/conversational_agents.svg" alt="Conversational Agents">
+        <img src="images/conversational_agents.png" alt="Conversational Agents">
         <div>
           <h3>Conversational Agents</h3>
           <p>
@@ -503,6 +579,89 @@
             <a href="https://patents.google.com/patent/US12118702B2/en">US&nbsp;12,118,702</a>
             and <a href="https://patents.google.com/patent/US11875494B2/en">US&nbsp;11,875,494</a>.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="talks" class="section">
+      <h2 class="section-title">Talks &amp; Media</h2>
+
+      <div class="project talk-card">
+        <a class="video" href="https://www.youtube.com/watch?v=72Yk0VG_nnU" target="_blank" rel="noopener">
+          <img src="images/tedx_agi.jpg" alt="The Truth About AGI — TEDxBoston">
+        </a>
+        <div>
+          <h3><a href="https://www.youtube.com/watch?v=72Yk0VG_nnU">The Truth About AGI</a></h3>
+          <div class="meta">TEDxBoston &middot; 2024</div>
+          <p>
+            How today&rsquo;s models really compare to human intelligence, and where the
+            path to AGI actually stands.
+          </p>
+        </div>
+      </div>
+
+      <div class="project talk-card">
+        <a class="video" href="https://www.youtube.com/watch?v=-9mC3_c_y7A" target="_blank" rel="noopener">
+          <img src="images/tedx_metaai.jpg" alt="MetaAI: Artificial Intelligence That Can Engineer Itself — TEDxBeaconStreet">
+        </a>
+        <div>
+          <h3><a href="https://www.ted.com/talks/otkrist_gupta_metaai_artificial_intelligence_that_can_engineer_itself">MetaAI: Artificial Intelligence That Can Engineer Itself</a></h3>
+          <div class="meta">TEDxBeaconStreet &middot; 2021 &middot; <a href="https://www.youtube.com/watch?v=-9mC3_c_y7A" target="_blank" rel="noopener">YouTube</a></div>
+          <p>
+            What happens when AI systems begin designing their own architectures &mdash;
+            the ideas behind MetaQNN, for a general audience.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="talk-sub">Podcasts &amp; Interviews</h3>
+
+      <div class="project talk-card">
+        <a class="video" href="https://www.youtube.com/watch?v=tDZ-yy4TzJ0" target="_blank" rel="noopener">
+          <img src="images/media_tDZyy4TzJ0.jpg" alt="Gaining Competitive Advantage with Machine Learning and GenAI — The Tech Trek">
+        </a>
+        <div>
+          <h3><a href="https://www.youtube.com/watch?v=tDZ-yy4TzJ0">Gaining Competitive Advantage with Machine Learning and GenAI</a></h3>
+          <div class="meta">Podcast &middot; The Tech Trek &middot; 2024</div>
+          <p>
+            How Lendbuzz uses machine learning and generative AI to build a competitive
+            edge in lending.
+          </p>
+        </div>
+      </div>
+
+      <div class="project talk-card">
+        <a class="video" href="https://www.youtube.com/watch?v=-FUzNEheCK8" target="_blank" rel="noopener">
+          <img src="images/podcast_aiinaction.jpg" alt="AI in Action, Episode 265 — Alldus">
+        </a>
+        <div>
+          <h3><a href="https://www.youtube.com/watch?v=-FUzNEheCK8">AI in Action, Episode 265</a></h3>
+          <div class="meta">Podcast &middot; Alldus &middot; 2021</div>
+          <p>
+            Using machine learning and LLMs to rethink credit and underwriting at Lendbuzz.
+          </p>
+        </div>
+      </div>
+
+      <div class="project talk-card">
+        <a class="video" href="https://www.youtube.com/watch?v=16lA9wmznTQ" target="_blank" rel="noopener">
+          <img src="images/media_16lA9wmznTQ.jpg" alt="Reality and Hype in Deep Learning — Futurized">
+        </a>
+        <div>
+          <h3><a href="https://www.youtube.com/watch?v=16lA9wmznTQ">Reality and Hype in Deep Learning</a></h3>
+          <div class="meta">Podcast &middot; Futurized #8 &middot; 2020</div>
+          <p>
+            A candid look at what deep learning can and can&rsquo;t do &mdash;
+            explainability, generalization, and data efficiency.
+          </p>
+        </div>
+      </div>
+
+      <div class="talk">
+        <div class="year">2021</div>
+        <div>
+          <h3><a href="https://www.aitimejournal.com/interview-with-otkrist-gupta-vp-of-data-science-lendbuzz/28838/">Interview: Deep Learning in Finance</a></h3>
+          <div class="meta">Written &middot; AI Time Journal</div>
         </div>
       </div>
     </section>
