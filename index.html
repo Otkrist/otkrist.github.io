@@ -1,46 +1,528 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Otkrist Gupta</title>
-  <link rel="icon"
-      type="image/png"
-      href="">
-  <link rel="stylesheet" href="webpage.css">
-   <script type="text/javascript" src="julia.js"> </script>
+  <style>
+    :root {
+      --bg: #fcfcfb;
+      --fg: #17181a;
+      --muted: #6b7280;
+      --line: #e7e6e3;
+      --accent: #2563eb;
+    }
+    /* Auto dark mode — uncomment to make the page follow the visitor's OS theme. */
+    /* @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0c1114;
+        --fg: #e7edf0;
+        --muted: #8ea2ad;
+        --line: #1f2a30;
+        --accent: #6aa9ff;
+      }
+    } */
+   
+
+    * { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 24px 10vh;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 15px;
+      margin-bottom: 8vh;
+      padding: 18px 0;
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav a {
+      position: relative;
+      color: var(--muted);
+      text-decoration: none;
+      padding-bottom: 6px;
+      transition: color .15s ease;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .18s ease;
+    }
+    nav a:hover { color: var(--fg); text-decoration: none; }
+    nav a:hover::after { transform: scaleX(1); }
+    nav a[aria-current] { color: var(--accent); font-weight: 600; }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex: none;
+    }
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+    }
+    .role { color: var(--muted); font-size: 16px; }
+
+    p { margin: 0 0 20px; }
+    .bio { color: var(--fg); }
+    .bio i { color: var(--fg); }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 32px;
+      font-size: 15px;
+    }
+    .links a { color: var(--muted); }
+    .links a:hover { color: var(--fg); text-decoration: none; }
+
+    /* Projects */
+    .section {
+      margin-top: 48px;
+      padding-top: 40px;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 80px;
+    }
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0 0 36px;
+    }
+    .project {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 44px;
+    }
+    .project img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      display: block;
+    }
+    .project h3 {
+      font-size: 19px;
+      font-weight: 600;
+      margin: 0 0 8px;
+      letter-spacing: -0.01em;
+    }
+    .project h3 a { color: var(--fg); }
+    .project h3 a:hover { color: var(--accent); text-decoration: none; }
+    .project p { color: var(--muted); font-size: 15px; margin: 0; }
+
+    .project.text-only { grid-template-columns: 1fr; }
+
+    @media (max-width: 520px) {
+      .project { grid-template-columns: 1fr; gap: 14px; }
+    }
+
+    /* Wider screens: use the extra room */
+    @media (min-width: 900px) {
+      .wrap { max-width: 1040px; }
+      .project { grid-template-columns: 380px 1fr; gap: 48px; }
+    }
+
+    #top { scroll-margin-top: 80px; }
+
+    footer {
+      margin-top: 8vh;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
-<div id="foobar"> 
-<canvas id="myCanvas"></canvas>
-<div id="overlay">
-<div id="mynavbar">
-  <ul class="navBar">
-  <li class="navLinkItem"><a href="index.html" class="navLink">Home</a></li>
-  <li class="navLinkItem"><a href="projects.html" class="navLink">Projects</a></li>
-  <li class="navLinkItem"><a href="OtkristGuptaCV.pdf" class="navLink">Resume</a></li>
-  <li class="navLinkItem"><a href="contact.html" class="navLink">Contact</a></li>
-  <li class="navLinkItem"><a href="links.html" class="navLink">Links</a></li>
-  </ul>
-</div>
+  <main class="wrap">
+    <nav>
+      <a href="#top" aria-current="page">Home</a>
+      <a href="#projects">Work</a>
+      <a href="OtkristGuptaCV.pdf">Resume</a>
+    </nav>
 
+    <section id="top">
+    <header>
+      <img src="images/profileface.png" alt="Otkrist Gupta">
+      <div>
+        <h1>Otkrist Gupta</h1>
+        <div class="role">VP of Research &amp; Development, Lendbuzz</div>
+      </div>
+    </header>
 
-<table>
-<tr><td>
-  <img src="images/IMG_8051_500.jpg">
-</td><td style="align: top;text-align: top;">
-<h1>
-Otkrist Gupta
-</h1>
-<div style="font-size: 20px;">
-Otkrist Gupta is currently Vice President of Data Science at Lendbuzz, focussing on deep learning with applications in finance and computer vision. He completed his Ph.D. at MIT Media Lab from camera culture group. His research is focused on inventing new algorithms for deep learning for health screening and diagnosis, hidden geometry detection, exploiting techniques from optimization, linear algebra and compressive sensing. He also works on designing algorithms for futuristic 3D projective displays.
- </br></br> Before joining MIT Media Lab Otkrist worked in Google Now team where he built voice actions such as <i>take a picture</i> and <i>what's on my Chromecast</i> and worked on voice response quality from <i>Google Now</i>. He also worked at LinkedIn where he developed services such as <i> Smart ToDo</i>, <i>Ultra fast auto-complete</i>, <i>Notifications</i> and <i>CheckIn platform</i>. He completed his bachelors from Indian Institute of Technology Delhi (IITD) in Computer Science with emphasis on algorithms and linear algebra. After graduating from IITD, he worked for one year in field of High Frequency Trading at Tower Research Capital.
-</div>
-</td></tr>
-</table>
+    <p class="bio">
+      I lead data science at Lendbuzz, working on deep learning with applications
+      in finance and computer vision. I completed my Ph.D. at the MIT Media Lab in
+      the Camera Culture group, where my research invented new algorithms for deep
+      learning in health screening and diagnosis, hidden geometry detection, and
+      futuristic 3D projective displays &mdash; drawing on optimization, linear
+      algebra, and compressive sensing.
+    </p>
+    <p class="bio">
+      Before MIT, I was on the Google Now team, where I built voice actions such as
+      <i>take a picture</i> and <i>what's on my Chromecast</i>. Earlier, at LinkedIn,
+      I developed <i>Smart ToDo</i>, ultra-fast auto-complete, notifications, and the
+      check-in platform. I hold a bachelor's in Computer Science from IIT Delhi, and
+      spent a year in high-frequency trading at Tower Research Capital.
+    </p>
 
-<div id="footer">
-  Copyright (c) 2016 Otkrist Gupta. All rights reserved. Aided Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.
-</div>
-</div>
-</div>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/otkrist-gupta-4a81636/">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=2aEdHz0AAAAJ&hl=en">Google Scholar</a>
+      <a href="mailto:otkrist.gupta@lendbuzz.com">Email</a>
+    </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2 class="section-title">Selected Work</h2>
+
+      <div class="project">
+        <a href="https://doi.org/10.1016/j.jnca.2018.05.003">
+          <img src="images/split_learning_configs.png" alt="Split Learning">
+        </a>
+        <div>
+          <h3><a href="https://doi.org/10.1016/j.jnca.2018.05.003">Split Learning</a></h3>
+          <p>
+            Distributed deep learning without sharing raw data. A neural network is
+            split at a cut layer &mdash; clients train the lower layers on their own
+            data and send only intermediate activations to a server holding the rest &mdash;
+            enabling institutions to collaboratively train on sensitive records
+            (e.g. patient data) that never leave their premises. See the
+            <a href="https://dspace.mit.edu/entities/publication/767c5b6b-9db9-4224-b9c0-94c4efd07532">MIT Thesis</a>,
+            the <a href="https://doi.org/10.1016/j.jnca.2018.05.003">paper</a>, and
+            <a href="https://arxiv.org/abs/1812.00564">Split Learning for Health</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://arxiv.org/abs/1611.02167">
+          <img src="images/metaqnn_fig1.png" alt="Designing Neural Network Architectures using Reinforcement Learning">
+        </a>
+        <div>
+          <h3><a href="https://arxiv.org/abs/1611.02167">Neural Architecture Search with Reinforcement Learning</a></h3>
+          <p>
+            MetaQNN &mdash; a reinforcement-learning agent that automatically designs
+            high-performing convolutional network architectures, learning to assemble
+            layers via Q-learning. An early landmark in neural architecture search.
+            Presented at the <a href="https://arxiv.org/abs/1611.02167">International Conference on Learning Representations (ICLR)</a>, 2017;
+            a follow-up <a href="https://arxiv.org/abs/1705.10823">accelerates the search</a> with early performance prediction.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="images/conversational_agents.svg" alt="Conversational Agents">
+        <div>
+          <h3>Conversational Agents</h3>
+          <p>
+            Building conversational agents in production. With the
+            <strong>Google Search NLP</strong> team I developed speech infrastructure
+            and home-action voice commands such as <i>What&rsquo;s on my Chromecast?</i>,
+            featured at <a href="https://www.youtube.com/watch?v=biSpvXBGpE0">Google&nbsp;I/O&nbsp;2014</a>. At <strong>Lendbuzz</strong>, I build
+            voice agents for call-center collections that have handled millions of minutes
+            of calls and recovered several million dollars.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://arxiv.org/abs/2008.09161">
+          <img src="images/nopeek_fig2.png" alt="NoPeek">
+        </a>
+        <div>
+          <h3><a href="https://arxiv.org/abs/2008.09161">NoPeek: Preventing Data Leakage in Distributed Learning</a></h3>
+          <p>
+            Stopping raw data from leaking through shared activations. NoPeek adds a
+            distance-correlation loss that scrubs sensitive information out of the
+            intermediate features exchanged during distributed training &mdash; so an
+            adversary who intercepts them cannot reconstruct the original input, such as
+            a face. See <a href="https://arxiv.org/abs/2008.09161">NoPeek</a> (ICDMW 2020);
+            a follow-up, NoPeek-Infer (IEEE&nbsp;FG 2021), extends it to inference, and the
+            same approach reduces leakage for
+            <a href="https://www.media.mit.edu/publications/reducing-leakage-in-distributed-deep-learning-for-sensitive-health-data-accepted-to-iclr-2019-workshop-on-ai-for-social-good-2019/">sensitive health data</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://patents.google.com/patent/US12175381B1/en">
+          <img src="images/patent.png" alt="Financial Scoring">
+        </a>
+        <div>
+          <h3><a href="https://patents.google.com/patent/US12175381B1/en">Financial Scoring and Automated Underwriting</a></h3>
+          <p>
+            Specialized AI architectures for underwriting &mdash; predicting whether a
+            borrower will meet a financial obligation by processing unstructured
+            transaction and behavioral data through stacked machine-learning layers.
+            See the <a href="https://patents.google.com/patent/US12175381B1/en">patent</a> (US&nbsp;12,175,381).
+            Uses machine learning and reinforcement-learning agents to automate custom
+            underwriting workflows.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="http://www.nature.com/ncomms/journal/v3/n3/full/ncomms1747.html">
+          <img src="images/lac_new.png" alt="Looking Around Corners" style="object-fit: cover; padding: 0;">
+        </a>
+        <div>
+          <h3><a href="http://www.nature.com/ncomms/journal/v3/n3/full/ncomms1747.html">Looking Around Corners</a></h3>
+          <p>
+            Algorithms that reconstruct scenes hidden from direct line of sight,
+            using the faint timing of scattered light to see around corners.
+            Published in <a href="http://www.nature.com/ncomms/journal/v3/n3/full/ncomms1747.html">Nature Communications</a>.
+            Related work reconstructs hidden shapes from
+            <a href="https://doi.org/10.1364/OE.20.019096">diffuse reflections</a> and classifies objects hidden
+            behind <a href="https://doi.org/10.1364/OE.25.017466">scattering media</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://arxiv.org/abs/1705.08016">
+          <img src="images/fgvc_pairwise.png" alt="Fine-Grained Visual Classification">
+        </a>
+        <div>
+          <h3><a href="https://arxiv.org/abs/1705.08016">Fine-Grained Visual Classification</a></h3>
+          <p>
+            Telling apart categories that look almost identical &mdash; bird species,
+            car models &mdash; by regularizing what the network learns. Pairwise
+            Confusion pulls the predictions of image pairs together to curb overfitting,
+            while a maximum-entropy method keeps predictions from becoming over-confident.
+            See <a href="https://arxiv.org/abs/1705.08016">Pairwise Confusion</a> (ECCV 2018)
+            and <a href="https://arxiv.org/abs/1809.05934">Maximum-Entropy</a> (NeurIPS 2018).
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://arxiv.org/abs/2009.05489">
+          <img src="images/docintel_mrz.jpg" alt="Document Intelligence">
+        </a>
+        <div>
+          <h3><a href="https://arxiv.org/abs/2009.05489">Document Intelligence</a></h3>
+          <p>
+            Reading and verifying identity documents. MRZNet locates and reads the
+            machine-readable zone on passports and visas at any orientation and scale;
+            companion work detects tampering by modeling a document as a graph of its
+            text elements. See <a href="https://arxiv.org/abs/2009.05489">MRZ extraction</a> (IJDAR)
+            and <a href="https://doi.org/10.1007/978-3-031-09037-0_22">manipulation detection</a> (ICPRAI 2022).
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://openaccess.thecvf.com/content_cvpr_2016_workshops/w9/papers/Gupta_Real-Time_Physiological_Measurement_CVPR_2016_paper.pdf">
+          <img src="images/physio.png" alt="Real-Time Physiological Measurement">
+        </a>
+        <div>
+          <h3><a href="https://openaccess.thecvf.com/content_cvpr_2016_workshops/w9/papers/Gupta_Real-Time_Physiological_Measurement_CVPR_2016_paper.pdf">Real-Time Physiological Measurement</a></h3>
+          <p>
+            Measuring heart rate and heart-rate variability remotely and in real time,
+            fusing RGB, monochrome, and thermal cameras to recover the blood-volume pulse
+            with live visualization. Presented at
+            <a href="https://openaccess.thecvf.com/content_cvpr_2016_workshops/w9/papers/Gupta_Real-Time_Physiological_Measurement_CVPR_2016_paper.pdf">CVPR</a>, 2016.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://arxiv.org/abs/1603.06829">
+          <img src="images/facial_teaser.png" alt="Facial Expression Recognition">
+        </a>
+        <div>
+          <h3><a href="https://arxiv.org/abs/1603.06829">Facial Expression Recognition</a></h3>
+          <p>
+            Recognizing expressions in video by processing multiple temporal
+            &ldquo;velocities&rdquo; in parallel, so the model adapts to both fast and
+            slow motion; related work adds robustness to lighting via illumination-invariant
+            representations. See <a href="https://arxiv.org/abs/1603.06829">Multi-Velocity Networks</a> (IEEE TAC)
+            and <a href="https://arxiv.org/abs/1603.06531">illumination invariants</a> (Pattern Recognition).
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://patents.google.com/patent/US10755172B2/en">
+          <img src="images/splitnnpatent.png" alt="Secure Multi-Party Training">
+        </a>
+        <div>
+          <h3><a href="https://patents.google.com/patent/US10755172B2/en">Secure Multi-Party Training</a></h3>
+          <p>
+            A split neural network lets multiple data owners collaboratively train a
+            shared model on a server without ever exposing their raw private data;
+            a companion study compares its
+            <a href="https://arxiv.org/abs/1909.09145">communication efficiency against federated learning</a>.
+            See the patents
+            <a href="https://patents.google.com/patent/US10755172B2/en">US&nbsp;10,755,172</a>
+            and <a href="https://patents.google.com/patent/US11669737B2/en">US&nbsp;11,669,737</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://arxiv.org/abs/2009.05158">
+          <img src="images/ocrgraph.png" alt="OCR Graph Features for Forgery Detection">
+        </a>
+        <div>
+          <h3><a href="https://arxiv.org/abs/2009.05158">OCR Graph Features for Forgery Detection</a></h3>
+          <p>
+            Detecting forged text in documents by building a per-character graph of OCR
+            bounding-box geometry and classifying it for tampering &mdash; pixel edits,
+            copy-move, and splicing. See the <a href="https://arxiv.org/abs/2009.05158">paper</a> (2020)
+            and <a href="https://patents.google.com/patent/US12020176B2/en">patent</a> (US&nbsp;12,020,176).
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="images/mlhealth.png" alt="Machine Learning for Health &amp; Agriculture">
+        <div>
+          <h3>Machine Learning for Health &amp; Agriculture</h3>
+          <p>
+            Applying machine learning to real-world screening and classification: pixel-wise
+            screening of gum disease from intraoral photos
+            (<a href="https://ieeexplore.ieee.org/document/8227605">IEEE HI-POCT 2017</a>),
+            near-infrared classification of produce by type and grower across 75,000+ samples
+            (<a href="https://www.nature.com/articles/s41598-018-23394-3">Nature Scientific Reports 2018</a>),
+            and smartphone-based point-of-care exams &mdash; ECG, ophthalmoscope, otoscope, and
+            gait &mdash; at population scale
+            (<a href="https://bmjopen.bmj.com/content/8/4/e018774">BMJ Open 2018</a>).
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://arxiv.org/abs/1909.12734">
+          <img src="images/adv_obfuscation.png" alt="Adversarial Attribute Obfuscation">
+        </a>
+        <div>
+          <h3><a href="https://arxiv.org/abs/1909.12734">Adversarial Attribute Obfuscation</a></h3>
+          <p>
+            Adversarial perturbations that erase a sensitive attribute from an image while
+            keeping the useful, public attribute intact. See the
+            <a href="https://arxiv.org/abs/1909.12734">paper</a> (2019).
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://scholars.duke.edu/individual/pub1328435">
+          <img src="images/psf_optics.png" alt="Depth-Variant PSF Design">
+        </a>
+        <div>
+          <h3><a href="https://scholars.duke.edu/individual/pub1328435">Depth-Variant PSF Design</a></h3>
+          <p>
+            An optics framework using partially coherent ambiguity functions to design
+            point-spread functions that vary controllably with depth. Presented at
+            <a href="https://scholars.duke.edu/individual/pub1328435">PIERS</a>, 2011.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://dl.acm.org/doi/10.1145/2815585.2817801">
+          <img src="images/rflow.png" alt="Rflow: Interaction Beyond Walls">
+        </a>
+        <div>
+          <h3><a href="https://dl.acm.org/doi/10.1145/2815585.2817801">Rflow: Interaction Beyond Walls</a></h3>
+          <p>
+            A radio-frequency sensor that tracks a moving hand through drywall to within
+            centimeters &mdash; enabling camera-free interaction through occluders.
+            Presented at <a href="https://dl.acm.org/doi/10.1145/2815585.2817801">UIST</a>, 2015.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <a href="https://patents.google.com/patent/US12118702B2/en">
+          <img src="images/image_authenticity.png" alt="Determining Image Authenticity">
+        </a>
+        <div>
+          <h3><a href="https://patents.google.com/patent/US12118702B2/en">Determining Image Authenticity</a></h3>
+          <p>
+            A CNN with a constrained convolutional layer that detects manipulation
+            fingerprints &mdash; such as print-and-scan attacks &mdash; to judge whether an
+            image is authentic. See the patents
+            <a href="https://patents.google.com/patent/US12118702B2/en">US&nbsp;12,118,702</a>
+            and <a href="https://patents.google.com/patent/US11875494B2/en">US&nbsp;11,875,494</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>&copy; 2026 Otkrist Gupta</footer>
+  </main>
+
+  <script>
+    // Scroll-spy: highlight the nav link for the section currently in view.
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    const byId = {};
+    navLinks.forEach(a => { byId[a.getAttribute('href').slice(1)] = a; });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.removeAttribute('aria-current'));
+          const active = byId[entry.target.id];
+          if (active) active.setAttribute('aria-current', 'page');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+
+    Object.keys(byId).forEach(id => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+  </script>
 </body>
 </html>
-
