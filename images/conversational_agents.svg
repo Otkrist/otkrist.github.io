@@ -1,30 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Conversational agents">
-  <!-- main bubble (agent speaking) -->
+  <!-- agent bubble (top-left) with voice waveform -->
   <g>
-    <path d="M70 60 h300 a26 26 0 0 1 26 26 v118 a26 26 0 0 1 -26 26 h-214 l-40 34 v-34 h-46 a26 26 0 0 1 -26 -26 v-118 a26 26 0 0 1 26 -26 z"
-          fill="#f7f7f6" stroke="#cfceca" stroke-width="3"/>
-    <!-- voice waveform -->
+    <path d="M92 64 h300 a30 30 0 0 1 30 30 v92 a30 30 0 0 1 -30 30 h-214 l-46 40 v-40 h-40 a30 30 0 0 1 -30 -30 v-92 a30 30 0 0 1 30 -30 z"
+          fill="#eef3fc" stroke="#2563eb" stroke-width="3"/>
     <g fill="#2563eb">
-      <rect x="118" y="130" width="9" height="30" rx="4.5"/>
-      <rect x="145" y="112" width="9" height="66" rx="4.5"/>
-      <rect x="172" y="92"  width="9" height="106" rx="4.5"/>
-      <rect x="199" y="122" width="9" height="46" rx="4.5"/>
-      <rect x="226" y="80"  width="9" height="130" rx="4.5"/>
-      <rect x="253" y="122" width="9" height="46" rx="4.5"/>
-      <rect x="280" y="92"  width="9" height="106" rx="4.5"/>
-      <rect x="307" y="112" width="9" height="66" rx="4.5"/>
-      <rect x="334" y="130" width="9" height="30" rx="4.5"/>
+      <rect x="120" y="128" width="10" height="24" rx="5"/>
+      <rect x="150" y="112" width="10" height="56" rx="5"/>
+      <rect x="180" y="92"  width="10" height="96" rx="5"/>
+      <rect x="210" y="120" width="10" height="40" rx="5"/>
+      <rect x="240" y="80"  width="10" height="120" rx="5"/>
+      <rect x="270" y="120" width="10" height="40" rx="5"/>
+      <rect x="300" y="98"  width="10" height="84" rx="5"/>
+      <rect x="330" y="116" width="10" height="48" rx="5"/>
+      <rect x="360" y="130" width="10" height="20" rx="5"/>
     </g>
   </g>
 
-  <!-- reply bubble (typing) -->
+  <!-- user reply bubble (bottom-right), filled accent -->
   <g>
-    <path d="M406 226 h164 a24 24 0 0 1 24 24 v58 a24 24 0 0 1 -24 24 h-96 v30 l-36 -30 h-32 a24 24 0 0 1 -24 -24 v-58 a24 24 0 0 1 24 -24 z"
-          fill="#ffffff" stroke="#cfceca" stroke-width="3"/>
-    <g fill="#9aa0a6">
-      <circle cx="452" cy="279" r="9"/>
-      <circle cx="490" cy="279" r="9"/>
-      <circle cx="528" cy="279" r="9"/>
+    <path d="M298 214 h218 a30 30 0 0 1 30 30 v58 a30 30 0 0 1 -30 30 h-150 v34 l-40 -34 h-28 a30 30 0 0 1 -30 -30 v-58 a30 30 0 0 1 30 -30 z"
+          fill="#2563eb"/>
+    <g fill="#ffffff">
+      <circle cx="372" cy="273" r="10"/>
+      <circle cx="412" cy="273" r="10"/>
+      <circle cx="452" cy="273" r="10"/>
     </g>
   </g>
 </svg>
